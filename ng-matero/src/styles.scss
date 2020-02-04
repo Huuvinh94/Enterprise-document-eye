@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "styles/app";
+* {
+    font-family: Roboto, "Segoe UI", BlinkMacSystemFont, -apple-system, sans-serif;
+}
+
+.success-sackBar {
+    background-color: rgb(12, 163, 12);
+}
+
+.error-sackBar {
+    background-color: rgb(228, 89, 89);
+}
+
+.highlight {
+    background: #00bcd4;
+}
+
+mat-header-cell {
+    font-weight: bold !important;
+    font-size: 15px !important;
+}

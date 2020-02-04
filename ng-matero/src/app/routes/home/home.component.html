@@ -1,0 +1,335 @@
+<!-- Navbar -->
+<header>
+    <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+
+        <!-- Brand -->
+        <mdb-navbar-brand>
+            <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+                <strong>I2ICORP</strong>
+            </a>
+        </mdb-navbar-brand>
+        <links>
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Trang chủ
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Dịch vụ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Về chúng tôi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Liên hệ</a>
+                </li>
+            </ul>
+
+            <!-- Right -->
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbar-tools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe"></i><span class="d-none d-xl-inline-block ml-1">Ngôn ngữ</span></a>
+                    <div class="w-50 dropdown-menu dropdown-menu-right dropdown-info">
+                        <a class="dropdown-item waves-effect waves-light" href="#">Tiếng Việt</a>
+                        <a class="dropdown-item waves-effect waves-light" href="#">English</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded" target="_blank">
+                        <i class="fab fa-github mr-2"></i>I2ICORP
+                    </a>
+                </li>
+            </ul>
+
+        </links>
+    </mdb-navbar>
+    <mdb-carousel [isControls]="isDesktopDevice" class="carousel slide carousel-fade" [animation]="'fade'">
+        <div>
+            <mdb-carousel-item>
+                <div class="view w-100">
+                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                    <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+                </div>
+                <div class="carousel-caption" *ngIf="isDesktopDevice">
+                    <h3 class="h3-responsive">Light mask</h3>
+                    <p>First text</p>
+                </div>
+            </mdb-carousel-item>
+            <mdb-carousel-item>
+                <div class="view w-100">
+                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+                </div>
+                <div class="carousel-caption" *ngIf="isDesktopDevice">
+                    <h3 class="h3-responsive">Strong mask</h3>
+                    <p>Secondary text</p>
+                </div>
+            </mdb-carousel-item>
+            <mdb-carousel-item>
+                <div class="view w-100">
+                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
+                    <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                </div>
+                <div class="carousel-caption" *ngIf="isDesktopDevice">
+                    <h3 class="h3-responsive">Slight mask</h3>
+                    <p>Third text</p>
+                </div>
+            </mdb-carousel-item>
+        </div>
+        <div class="container-search">
+            <form>
+                <div class="form-group">
+                    <label class="header-upload">Tìm kiếm công việc mơ ước</label>
+                    <div class="content-search">
+                        <div class="input-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAdd" title="Upload cv"><i
+                                            class="fa fa-upload" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="custom-file">
+                                    <input #fileUpload type="file" class="custom-file-input form-control" id="inputGroupFileUpload" aria-describedby="inputGroupFileAdd" accept="application/pdf,application/vnd.ms-excel" title="Chọn file upload" (change)="changeFileUpload($event)">
+                                    <label class="custom-file-label form-control-file" for="inputGroupFileUpload">
+                                        {{labelInfoFile}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-2 float-right content-info-cv">
+                        <label class="info-apply text-white">Bạn chưa có cv?&nbsp;&nbsp;</label>
+                        <a class="btn btn-default" href="#">Tạo cv miễn phí</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </mdb-carousel>
+</header>
+<main>
+    <div class="container">
+
+        <!--Section: Blog v.2-->
+        <section class="extra-margins text-center">
+
+            <h3 class="text-center mb-5 my-5 font-weight-bold"> Các công ty hàng đầu</h3>
+
+            <!--Grid row-->
+            <div class="row pb-3">
+
+                <!--Grid column-->
+                <div *ngFor="let item of listCityTopTrending" class="col-lg-3 col-md-6 mb-4 wow fadeIn pl-2 pr-2 top-city-trending" data-wow-delay="0.4s">
+
+                    <!--Card Light-->
+                    <div class="card">
+                        <!--Card image-->
+                        <div class="view overlay item">
+                            <span class="notify-badge">
+                                <img [src]="'assets/images/medal_' + item.level + '.png'" alt="badge icon top city">
+                            </span>
+                            <img [src]="'data:image/png;base64,' + item.image" class="card-img-top" alt="image info city">
+                            <a>
+                                <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                            </a>
+                        </div>
+                        <!--/.Card image-->
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title darkgrey-text">
+                                <strong>{{item.cityName}}</strong>
+                            </h4>
+                            <hr>
+                            <!--Text-->
+                            <p class="font-small compact-text">{{item.descriptions}}
+                            </p>
+                            <a href="#" class="black-text d-flex flex-row-reverse">
+                                <p class="waves-effect p-2 font-small blue-text mb-0">Xem chi tiết
+                                    <i class="fas fa-long-arrow-alt-right ml-2" aria-hidden="true"></i>
+                                </p>
+                            </a>
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                    <!--/.Card Light-->
+
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--First row-->
+
+        </section>
+        <!--Section: Blog v.2-->
+
+    </div>
+    <hr>
+    <div class="container">
+        <section class="extra-margins text-center">
+
+            <h3 class="text-center mb-5 font-weight-bold"> Ứng viên nói về chúng tôi</h3>
+            <div class="row">
+                <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel" data-slide-to="0" class="light-blue darken-4 active"></li>
+                        <li data-target="#carousel" data-slide-to="1" class="light-blue darken-4"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div *ngFor="let ratingItem of listRating; let i = index;" [ngClass]="i === 0 ? 'active' : ''" class="carousel-item">
+                            <div>
+                                <div class="slide-box">
+                                    <div *ngFor="let item of ratingItem" class="card">
+                                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <span class="card-title">{{item.firstName + ' ' + item.lastName}}</span>
+                                            <span class="card-text compact-text">{{item.contents}}</span>
+                                            <div class="rating">
+                                                <a [ngClass]="item.rating >= 1 ? 'star' : ''" title="Give 1 stars">★</a>
+                                                <a [ngClass]="item.rating >= 2 ? 'star' : ''" title="Give 2 stars">★</a>
+                                                <a [ngClass]="item.rating >= 3 ? 'star' : ''" title="Give 3 stars">★</a>
+                                                <a [ngClass]="item.rating >= 4 ? 'star' : ''" title="Give 4 stars">★</a>
+                                                <a [ngClass]="item.rating >= 5 ? 'star' : ''" title="Give 5 stars">★</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a *ngIf="deviceService.isDesktop()" class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a *ngIf="deviceService.isDesktop()" class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="page-footer mdb-color darken-3 text-center text-left pt-5">
+
+    <!--Footer Links-->
+    <div class="container mb-3">
+
+        <!--First row -->
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-4 mt-1 mb-1 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+                <!--About-->
+                <h5 class="title mb-4 font-weight-bold text-uppercase">Thông tin về chúng tôi</h5>
+
+                <p>I2ICORP là một công ty ứng dụng công nghệ lãnh vực tài chính / ngân hàng.</p>
+
+                <p>Với đội ngũ chuyên gia nhiều kinh nghiệm, sáng tạo, năng động , nhiệt huyết và luôn ấy khách hàng làm trung tâm, chúng tôi tin rằng các sản phẩm, và giải pháp mà chúng tôi cung cấp sẽ đem lại sự hài lòng cho bạn.</p>
+                <!--/About -->
+
+                <div class="footer-socials mt-2">
+
+                    <!--Facebook-->
+                    <a type="button" class="btn-floating  btn-danger-2 waves-effect waves-light"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <!--Dribbble-->
+                    <a type="button" class="btn-floating  btn-danger-2 waves-effect waves-light"><i
+                            class="fab fa-dribbble"></i></a>
+                    <!--Twitter-->
+                    <a type="button" class="btn-floating  btn-danger-2 waves-effect waves-light"><i
+                            class="fab fa-twitter"></i></a>
+                    <!--Google +-->
+                    <a type="button" class="btn-floating  btn-danger-2 waves-effect waves-light"><i
+                            class="fab fa-google-plus-g"></i></a>
+
+                </div>
+            </div>
+            <!--/First column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Second column-->
+            <div class="col-lg-3 ml-lg-auto col-md-4 mt-1 mb-1 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+                <!--Search-->
+                <h5 class="text-uppercase mb-4 font-weight-bold">Địa chỉ</h5>
+
+                <ul class="footer-search list-unstyled">
+                    <li>
+                        <form class="search-form" role="search">
+                            <div class="md-form">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+
+                <!--Info-->
+                <p><i class="fas fa-home pr-1"></i> 284/3/4 11 ward, Phu Nhuan district, Ho Chi Minh City
+                </p>
+                <p><i class="fas fa-envelope pr-1"></i> contact@i2icorp.net</p>
+                <p><i class="fas fa-phone pr-1"></i> +84 903-798-288</p>
+                <!-- <p><i class="fas fa-print pr-1"></i> + 01 234 567 89</p> -->
+
+            </div>
+            <!--/Second column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Third column-->
+            <div class="col-xl-3 ml-auto col-lg-4 mt-2 mb-1 col-md-4 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+
+                <!-- Title -->
+                <h5 class="text-uppercase mb-4"><strong>Giờ mở cửa</strong></h5>
+
+                <!-- Opening hours table -->
+                <table class="table footer-table text-center text-white">
+                    <tbody>
+                        <tr>
+                            <td>Mon - Thu:</td>
+                            <td>8am - 9pm</td>
+                        </tr>
+                        <tr>
+                            <td>Fri - Sat:</td>
+                            <td>8am - 1am</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday:</td>
+                            <td>9am - 10pm</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!--/Third column-->
+
+        </div>
+        <!--/First row-->
+
+    </div>
+    <!--/Footer Links-->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3 text-center">
+        <div class="container-fluid">
+            © 2020 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> I2ICORP.NET
+            </a>
+        </div>
+    </div>
+    <!--/Copyright-->
+
+</footer>

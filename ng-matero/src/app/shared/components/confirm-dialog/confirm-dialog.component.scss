@@ -1,0 +1,52 @@
+::ng-deep .confirm-dialog-container {
+    .mat-dialog-container {
+        border-radius: 12px;
+        padding: 0px;
+    }
+    .content-container {
+        margin: 5px 5px 5px 5px;
+        color: #8f9cb5;
+        display: flex;
+        &:hover {
+            cursor: move;
+        }
+    }
+    #close-icon {
+        margin-left: auto;
+        order: 2;
+        font-weight: bolder;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .txt-confirm {
+        height: 70px;
+        font-size: 20px;
+        padding: 5px 5px 5px 10px;
+    }
+    #no-confirm {
+        height: 45px;
+        width: 50%;
+        background-color: #fc7169;
+        color: white;
+        border-radius: 10px;
+        margin-right: 5px;
+    }
+    #yes-confirm {
+        height: 45px;
+        width: 50%;
+        background-color: #54b42e;
+        color: white;
+        border-radius: 10px;
+        margin-left: 5px;
+    }
+    .btn-yes-no {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+    }
+    button:focus {
+        outline: 0;
+    }
+}

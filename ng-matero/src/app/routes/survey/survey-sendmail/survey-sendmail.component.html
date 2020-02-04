@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h3> Gửi Biểu Mẫu</h3>
+            <form [formGroup]="sendMailForm">
+                <input type="hidden" formControlName="_id">
+                <mat-form-field>
+                    <input #email type="text" matInput placeholder="Nhập mail người nhận" formControlName="email" cdkFocusInitial>
+                </mat-form-field>
+                <div class="button">
+                    <button mat-raised-button color="default" type="submit" (click)="onBack()" class="mr-2">
+                           Hủy
+                        </button>
+                    <button [disabled]="sendMailForm.invalid" mat-raised-button color="primary" type="submit" (click)="onSubmit()">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                           Gửi mail
+                        </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

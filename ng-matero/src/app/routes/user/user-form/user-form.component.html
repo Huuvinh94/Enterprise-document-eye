@@ -1,0 +1,65 @@
+<form [formGroup]="auth.userFormCreate" class="normal-form">
+    <mat-card-title class="text-primary text-center"> {{ !data.isEdit? 'Create User': 'Edit User' }}</mat-card-title>
+
+    <mat-grid-list cols="1" rowHeight="450px">
+        <mat-grid-tile>
+            <div class="controller-container">
+                <input type="hidden" formControlName="_id">
+                <mat-form-field>
+                    <input #firstName type="text" matInput placeholder="First name" formControlName="firstName" cdkFocusInitial>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Last name" formControlName="lastName">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Email*" formControlName="email">
+                    <mat-error *ngIf="auth.userFormCreate.hasError('required', 'email')">
+                        Please enter your email
+                    </mat-error>
+                    <mat-error *ngIf="auth.userFormCreate.hasError('email', 'email')">
+                        Invalid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password*" formControlName="password" autocomplete="password">
+                    <mat-error *ngIf="auth.userFormCreate.hasError('required', 'password') ">
+                        Please enter your new passwords
+                    </mat-error>
+                    <mat-error *ngIf="auth.userFormCreate.hasError('minlength', 'password')">
+                        Minimum 8 character password
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password confirm" formControlName="passwordConfirm" [errorStateMatcher]="auth.matcher" autocomplete="passwordConfirm">
+                    <mat-error *ngIf="auth.userFormCreate.hasError('notSame')">
+                        Passwords do not match
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select formControlName="roleId" placeholder="Role User">
+                        <ng-container *ngFor="let item of listRole">
+                            <mat-option value="{{item.roleId}}">{{item.roleName}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+                <div class="button float-right">
+                    <button mat-raised-button color="default" type="submit" (click)="onBack()" class="mr-2">
+                       Cancel
+                    </button>
+                    <button [disabled]="auth.userFormCreate.invalid" mat-raised-button color="primary" type="submit" (click)="onSubmit()">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        {{ !data.isEdit? 'Create': 'Edit' }}
+                    </button>
+                    <!-- <img *ngIf="loading" class="pl-2 mt-2 h-50"
+                        src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> -->
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>

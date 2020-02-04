@@ -1,0 +1,164 @@
+/* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
+
+html,
+body,
+.view {
+    height: 100%;
+}
+
+@media (max-width: 740px) {
+    .full-page-intro {
+        height: 1000px;
+    }
+}
+
+
+/* Half Page Carousel itself*/
+
+.carousel {
+    height: 50%;
+}
+
+.carousel .carousel-inner,
+.carousel .carousel-inner .active,
+.carousel .carousel-inner .carousel-item {
+    height: 100%
+}
+
+
+/* Adjustment for mobile devices*/
+
+@media (max-width: 776px) {
+    .carousel {
+        height: 100%;
+    }
+}
+
+
+/* Navbar animation */
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* Adding color to the Navbar on mobile */
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+::ng-deep .page-footer,
+::ng-deep .top-nav-collapse {
+    background-color: #1C2331;
+}
+
+.container-search {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    form {
+        width: 60%;
+        .header-upload {
+            font-size: 35px;
+            color: #ffffff;
+        }
+        .content-search {
+            background-color: transparent;
+            border-radius: 5px;
+            border: 14px solid rgba(0, 0, 0, 0.35);
+            align-items: center;
+            display: flex;
+        }
+        .custom-file {
+            height: 45px;
+        }
+    }
+}
+
+.custom-file-control.selected:lang(en)::after {
+    content: "" !important;
+}
+
+.custom-file-input {
+    ~.custom-file-label {
+        height: 45px;
+        align-items: center;
+        display: flex;
+        &::after {
+            height: 43px;
+            align-items: center;
+            display: flex;
+            content: "Chọn tập tin...";
+            background-color: #00c851;
+            border: 1px solid #00c851;
+        }
+    }
+}
+
+
+/* FF, IE7+, chrome (except button) */
+
+input[type=file],
+input[type=file]::-webkit-file-upload-button {
+    /* chromes and blink button */
+    cursor: pointer;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.slide-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .slide-box img {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .slide-box img {
+        -ms-flex: 0 0 33.3333%;
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: unset;
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #2d96cd;
+        height: 60px !important;
+        outline: #2d96cd;
+        background-size: 100%, 100%;
+        border: 1px solid #2d96cd;
+    }
+}
+
+.item {
+    position: relative;
+    display: inline-block;
+    .notify-badge {
+        position: absolute;
+        right: 0px;
+        top: 1px;
+        z-index: 1;
+        img {
+            width: 50px;
+            height: 80px;
+        }
+    }
+}

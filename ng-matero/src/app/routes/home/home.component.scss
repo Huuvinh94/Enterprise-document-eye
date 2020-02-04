@@ -1,0 +1,334 @@
+/* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
+
+html,
+body,
+.view {
+    height: 100%;
+}
+
+@media (max-width: 740px) {
+    .full-page-intro {
+        height: 1000px;
+    }
+}
+
+
+/* Half Page Carousel itself*/
+
+.carousel {
+    height: 50%;
+}
+
+.carousel .carousel-inner,
+.carousel .carousel-inner .active,
+.carousel .carousel-inner .carousel-item {
+    height: 100%
+}
+
+
+/* Adjustment for mobile devices*/
+
+@media (max-width: 776px) {
+    .carousel {
+        height: 100%;
+    }
+}
+
+
+/* Navbar animation */
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* Adding color to the Navbar on mobile */
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+::ng-deep .page-footer,
+::ng-deep .top-nav-collapse {
+    background-color: #1C2331;
+}
+
+.container-search {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    form {
+        width: 60%;
+        .header-upload {
+            font-size: 35px;
+            color: #ffffff;
+        }
+        .content-search {
+            background-color: transparent;
+            border-radius: 5px;
+            border: 14px solid rgba(0, 0, 0, 0.35);
+            align-items: center;
+            display: flex;
+        }
+        .custom-file {
+            height: 45px;
+        }
+    }
+    .custom-file-input {
+        ~.custom-file-label {
+            height: 45px;
+            align-items: center;
+            display: flex;
+            &::after {
+                height: 43px;
+                align-items: center;
+                display: flex;
+                content: "Chọn tập tin...";
+                background-color: #00c851;
+                border: 1px solid #00c851;
+            }
+        }
+    }
+}
+
+.custom-file-control.selected:lang(en)::after {
+    content: "" !important;
+}
+
+
+/* FF, IE7+, chrome (except button) */
+
+input[type=file],
+input[type=file]::-webkit-file-upload-button {
+    /* chromes and blink button */
+    cursor: pointer;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.slide-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: unset;
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #2d96cd;
+        height: 60px !important;
+        outline: #2d96cd;
+        background-size: 100%, 100%;
+        border: 1px solid #2d96cd;
+    }
+}
+
+.top-city-trending {
+    visibility: visible;
+    animation-name: fadeIn;
+    animation-delay: 0.4s;
+    width: 50%;
+    .item {
+        position: relative;
+        display: inline-block;
+        .notify-badge {
+            position: absolute;
+            right: 0px;
+            top: 1px;
+            z-index: 1;
+            img {
+                width: 50px;
+                height: 80px;
+            }
+        }
+    }
+}
+
+.compact-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+// .rating label:hover~label,
+// .rating input:focus~label,
+// .rating label:hover,
+// .rating a:hover,
+// .rating a:hover~a,
+// .rating a:focus,
+// .rating a:focus~a {
+//     color: orange;
+//     cursor: pointer;
+// }
+.carousel-inner .card {
+    border: unset;
+    border-radius: unset;
+    width: 14rem;
+    .card-img-top {
+        border-radius: 50%;
+        width: 160px;
+        height: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-title {
+        font-weight: bold;
+    }
+    .card-text {
+        font-size: 13px;
+    }
+    .rating {
+        font-size: 30px;
+    }
+    .rating input {
+        float: right;
+        opacity: 0;
+        position: absolute;
+    }
+    .rating a,
+    .rating label {
+        float: none;
+        cursor: default;
+        text-decoration: none;
+        -webkit-transition: color .4s;
+        -moz-transition: color .4s;
+        -o-transition: color .4s;
+        transition: color .4s;
+        &.star {
+            color: orange;
+        }
+        &:not(.star) {
+            color: #aaa;
+        }
+    }
+}
+
+.content-info-cv {
+    a {
+        border: 2px solid #fff;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: 700;
+        padding: 2px 15px;
+        font-size: 16px;
+    }
+}
+
+.btn-floating {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    width: 47px;
+    height: 47px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    margin: 10px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    padding: 0;
+    background-color: #ff9800!important;
+    i {
+        font-size: 1.25rem;
+        line-height: 47px;
+        width: inherit;
+        text-align: center;
+        color: #fff;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 959px) {
+     ::ng-deep .navbar {
+        background-color: #1C2331;
+    }
+    .container-search {
+        form {
+            .header-upload {
+                font-size: 20px;
+            }
+            .content-search {
+                border: 8px solid rgba(0, 0, 0, 0.35);
+            }
+            .custom-file {
+                height: 32px;
+            }
+        }
+        .custom-file-input {
+            ~.custom-file-label {
+                height: 32px;
+                &::after {
+                    height: 31px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+     ::ng-deep .navbar {
+        background-color: #1C2331;
+    }
+     ::ng-deep .carousel img {
+        height: 50vh;
+    }
+    .container-search {
+        top: 40%;
+        form {
+            width: 80%;
+            .header-upload {
+                font-size: 15px;
+            }
+            .content-search {
+                border: 6px solid rgba(0, 0, 0, 0.35);
+            }
+            .custom-file {
+                height: 32px;
+            }
+        }
+        .custom-file-input {
+            ~.custom-file-label {
+                height: 32px;
+                &::after {
+                    content: '...';
+                    height: 31px;
+                }
+            }
+        }
+    }
+    .content-info-cv {
+        font-size: 13px;
+        a {
+            border: 1px solid #fff;
+            border-radius: 50px;
+            color: #fff;
+            font-weight: 700;
+            padding: 1px 6px;
+            font-size: 13px;
+        }
+    }
+    .carousel-inner .card {
+        width: 8rem;
+        .card-img-top {
+            width: 100px;
+            height: 100px;
+        }
+        .card-title {
+            font-size: 13px;
+        }
+        .rating {
+            font-size: 16px;
+        }
+    }
+}

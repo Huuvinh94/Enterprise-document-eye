@@ -1,0 +1,16 @@
+<div class="matero-user-panel p-y-16 b-b-1" fxLayout="column" fxLayoutAlign="center center">
+    <img class="matero-user-panel-avatar m-b-8 r-full" src="assets/images/avatar.jpg" alt="avatar" width="64" />
+    <h4 class="matero-user-panel-name m-t-0 m-b-8 f-w-400">{{user.firstName + ' ' + user.lastName}}</h4>
+    <h5 class="matero-user-panel-email m-t-0 m-b-8 f-w-400">{{user.email}}</h5>
+    <div class="matero-user-panel-icons text-nowrap">
+        <a routerLink="/profile/overview" mat-icon-button>
+            <mat-icon class="icon-18">account_circle</mat-icon>
+        </a>
+        <a routerLink="/profile/settings" mat-icon-button>
+            <mat-icon class="icon-18">settings</mat-icon>
+        </a>
+        <a (click)="auth.handlerLogout()" mat-icon-button>
+            <mat-icon class="icon-18">exit_to_app</mat-icon>
+        </a>
+    </div>
+</div>

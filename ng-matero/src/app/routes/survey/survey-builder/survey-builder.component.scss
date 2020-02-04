@@ -1,0 +1,90 @@
+.container {
+    overflow: auto;
+    height: 500px
+}
+
+mat-form-field {
+    display: initial !important;
+}
+
+.page-container {
+    overflow: auto;
+    height: 282px;
+}
+
+.listBtn {
+    display: inline-flex;
+    margin-left: 2px;
+}
+
+.status-quest {
+    float: right;
+}
+
+.header-question {
+    display: flex;
+}
+
+.type-quest {
+    margin-left: auto;
+    order: 2;
+    margin-top: -26px;
+    font-size: 15px;
+}
+
+.list-page {
+    width: 109px;
+}
+
+.page-content {
+    width: 100%;
+}
+
+.content-quest {
+    width: 59%
+}
+
+#option-content {
+    width: 59%
+}
+
+.form-survey {
+    min-height: 20px;
+    font-size: 15px;
+    margin-bottom: 14px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.header-content {
+    display: flex;
+}
+
+.list-career {
+    margin-top: -27px;
+    margin-left: 78px;
+}
+
+.preview {
+    margin-top: 5px;
+}
+
+.quest_icon {
+    position: absolute;
+    left: -24px;
+    top: -3px;
+}
+
+.answer_icon {
+    position: absolute;
+    left: -24px;
+    top: 3px;
+}
+
+.page-delete {
+    margin-top: 18px;
+    margin-left: 3px;
+}

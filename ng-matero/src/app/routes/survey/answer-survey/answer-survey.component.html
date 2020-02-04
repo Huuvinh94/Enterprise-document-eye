@@ -1,0 +1,35 @@
+<script src="https://surveyjs.azureedge.net/1.1.25/survey.angular.min.js"></script>
+<h3> Câu Trả Lời</h3>
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Bản tóm tắt">
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let item of listQuestion,let i = index">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{item.title}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{item.answer!==null?item.answer.length:0}} Câu trả lời
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div id="chart-{{i}}"></div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+    <mat-tab label="Cá nhân">
+        <ng-template matTabContent>
+            <mat-form-field class="list-anwser">
+                <mat-select (selectionChange)="showAnswerDetailToSurvey($event)" [(ngModel)]="selectedAnswerSurvey" name="typeQuest">
+                    <mat-option *ngFor="let item of listAnswer,let i = index" [value]="item._id">
+                        Unnkown {{i+1}}
+                    </mat-option>
+                </mat-select>
+                <mat-icon class="icon-delete-answer" title="Xóa câu trả lời" (click)="deleteAnswerSurvey()" *ngIf="listAnswer.length>0" matSuffix>delete</mat-icon>
+            </mat-form-field>
+            <div id="surveyResult"></div>
+
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>

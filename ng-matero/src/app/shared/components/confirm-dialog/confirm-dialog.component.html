@@ -1,0 +1,12 @@
+<div>
+    <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle class="content-container">
+        <mat-icon id="close-icon" (click)="closeDialog()">close</mat-icon>
+    </div>
+    <div class="txt-confirm">
+        <span class="content-span full-width">{{data.message}}</span>
+    </div>
+    <div class="btn-yes-no">
+        <button mat-flat-button id="no-confirm" [mat-dialog-close]="false">NO</button>
+        <button mat-flat-button id="yes-confirm" [mat-dialog-close]="true">YES</button>
+    </div>
+</div>

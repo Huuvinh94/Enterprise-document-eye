@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12"><button mat-raised-button color="primary" (click)="createUser()">
+            <mat-icon aria-hidden="false" aria-label="add_box">add_box</mat-icon>
+            Create User
+            </button>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">List User</h4>
+
+                    </div>
+                    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                        <ng-container matColumnDef="index">
+                            <mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
+                            <mat-cell *matCellDef="let element; let i = index;">{{i +1}}</mat-cell>
+                        </ng-container>
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="email">
+                            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="roleName">
+                            <mat-header-cell *matHeaderCellDef> Role Name </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.result[0].roleName}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="firstName">
+                            <mat-header-cell *matHeaderCellDef> FirstName </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="lastName">
+                            <mat-header-cell *matHeaderCellDef> LastName </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef='let row'>
+                                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                <button tabindex="-1" mat-icon-button (click)="onEdit(row._id)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button tabindex="-1" mat-icon-button (click)="onDelete(row._id)" color="warn">
+                                    <mat-icon>delete_outline</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; let i = index;columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == (i + 1)}" (click)='selectionRow(row, (i + 1))'></mat-row>
+                    </mat-table>
+                    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
+                    </mat-paginator>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

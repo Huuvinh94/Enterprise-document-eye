@@ -1,0 +1,57 @@
+<form [formGroup]="formDoc" novalidate>
+    <div class="col-md-12">
+        <div class="form-group row text-center">
+            <label for="fileImport" class="col-md-3 col-form-label mt-3 font-weight-bold">Chọn tập tin import: </label>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <ngx-mat-file-input (change)="changeFileInput($event)" id="fileImport" formControlName="requiredFile" valuePlaceholder="Chưa chọn file" required></ngx-mat-file-input>
+                    <mat-icon matSuffix>folder</mat-icon>
+                    <mat-error *ngIf="formDoc.get('requiredFile').hasError('required')">
+                        Xin chọn 1 file
+                    </mat-error>
+                    <mat-error *ngIf="formDoc.get('requiredFile').hasError('maxContentSize')">
+                        Kích thước không được vượt {{formDoc.get('requiredFile')?.getError('maxContentSize').maxSize | byteFormat}} ({{formDoc.get('requiredfile')?.getError('maxContentSize').actualSize | byteFormat}}).
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</form>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="index">
+        <mat-header-cell *matHeaderCellDef> STT </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;">{{i +1}}</mat-cell>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="content">
+        <mat-header-cell *matHeaderCellDef> Nội Dung </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.content}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="careerName">
+        <mat-header-cell *matHeaderCellDef>
+            <div></div>
+            <div>
+                <p>Ngành nghề*</p>
+                <p *ngFor="let item of listCareer">{{item.careerId + ': ' + item.careerName}}</p>
+            </div>
+
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.careerId}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; let i = index;columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == (i + 1)}" (click)='selectionRow(row, (i + 1))'></mat-row>
+</mat-table>
+
+<div class="group-button p-1">
+    <button class="ml-2 float-right" mat-raised-button color="primary" (click)="save()">
+        <mat-icon aria-hidden="false" aria-label="save">save</mat-icon>
+        Lưu
+    </button>
+    <button class="float-left" mat-raised-button color="default" (click)="back()">
+        <mat-icon aria-hidden="false" aria-label="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+        Quay lại
+    </button>
+</div>
