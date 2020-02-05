@@ -1,0 +1,34 @@
+<app-header></app-header>
+<main class="pt-5 mt-5 mb-5">
+    <div class="container">
+        <!--Section: Blog v.2-->
+        <section class="extra-margins text-center">
+            <h1 class="suggest-title">Danh sách mẫu CV xin việc</h1>
+            <p>Các mẫu CV đuợc thiết kế theo chuẩn, theo các ngành nghề. Phù hợp với sinh viên và người đi làm.</p>
+            <div class="template-list">
+                <div class="row">
+                    <div *ngFor="let item of listResume" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 template-cv">
+                        <div class="content-cv">
+                            <a href="https://www.topcv.vn/mau-cv-tieng-anh/default">
+                                <img class="img-cv" [src]="'data:image/png;base64,' + item.image" title="" alt="">
+                            </a>
+                            <div class="overlay-cv">
+                                <a href="" class="">
+                                    <span>
+                                        <i class="fa fa-check"></i> Dùng mẫu này
+                                    </span>
+                                    <p>{{item.descriptions}}</p>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="title-cv">
+                            <a href="" title="Mẫu CV tiếng Anh Cổ Điển 1">{{item.name}}</a>
+                            <!-- <span class="label label-info">Miễn phí</span> -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<app-footer></app-footer>

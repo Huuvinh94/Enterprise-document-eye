@@ -4,7 +4,7 @@ import { HomeService } from '@core/services/home.service';
 import { RatingService } from '@core/services/rating.service';
 import { Constant } from 'app/common/constant';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { City } from './../../core/models/city';
+import { Company } from '../../core/models/company';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { City } from './../../core/models/city';
 })
 export class HomeComponent implements OnInit {
   labelInfoFile = '';
-  listCityTopTrending = new Array<City>();
+  listCompanyTopTrending = new Array<Company>();
   listRating = [];
   isDesktopDevice = true;
 
@@ -33,9 +33,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.labelInfoFile = Constant.LABEL_FILE_UPLOAD;
 
-    this.homeService.getCityTopTrending().subscribe(
+    this.homeService.getCompanyTopTrending().subscribe(
       res => {
-        this.listCityTopTrending = res;
+        this.listCompanyTopTrending = res;
       }
     );
 

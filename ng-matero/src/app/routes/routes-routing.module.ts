@@ -6,6 +6,7 @@ import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component'
 import { AdminLayoutComponent } from './../theme/admin-layout/admin-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { ListResumeComponent } from './list-resume/list-resume.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
 import { DoSurveyComponent } from './survey/do-survey/do-survey.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'new-resume',
+    component: ListResumeComponent
   },
   {
     path: 'dashboard',

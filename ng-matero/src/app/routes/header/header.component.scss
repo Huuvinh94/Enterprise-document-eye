@@ -1,0 +1,27 @@
+::ng-deep .carousel .carousel-inner,
+::ng-deep .carousel .carousel-inner .active,
+::ng-deep .carousel .carousel-inner .carousel-item {
+    height: 100%
+}
+
+
+/* Adjustment for mobile devices*/
+
+@media (max-width: 776px) {
+     ::ng-deep .carousel {
+        height: 100%;
+    }
+}
+
+::ng-deep .img-header {
+    width: 35px;
+    height: 35px;
+}
+
+
+/* Navbar animation */
+
+::ng-deep .navbar {
+    // background-color: rgba(0, 0, 0, 0.3);
+    background-color: #1C2331;
+}

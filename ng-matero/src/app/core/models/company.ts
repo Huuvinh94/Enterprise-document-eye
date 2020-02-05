@@ -1,6 +1,6 @@
-export class City {
-    cityCode: number;
-    cityName: string;
+export class Company {
+    companyCode: number;
+    companyName: string;
     state: string;
     userCreate: string;
     createdAt: Date;

@@ -14,8 +14,8 @@ export class HomeService {
         private common: Common
     ) { }
 
-    getCityTopTrending() {
-        return this.http.get<any>(environment.SERVER_URL + '/getCityTopTrending')
+    getCompanyTopTrending() {
+        return this.http.get<any>(environment.SERVER_URL + '/getCompanyTopTrending')
             .pipe(map((res: any) => {
                 if (res && res.statusCode === 200 && res.data) {
                     return res.data;
