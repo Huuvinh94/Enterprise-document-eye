@@ -1,0 +1,126 @@
+<mat-tab-group>
+    <mat-tab label="Đăng nhập">
+        <mat-card>
+            <p class="text-center">Đăng nhập để sử dụng mẫu CV</p>
+            <mat-card-content>
+                <form [formGroup]="signInService.signInForm">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <button mat-raised-button color="primary">
+                                Đăng nhập bằng Facebook
+                            </button>
+                            <p class="text-info-fb">
+                                <span>Khi bạn đăng nhập bằng facebook, mặc định bạn đồng ý với
+                                    <a target="_blank" href="#" class="text-highlight">Điều khoản dịch vụ
+                                    </a> và
+                                    <a target="_blank" href="#" class="text-highlight">
+                                        Chính sách bảo mật
+                                    </a> của I2ICORP
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div *ngIf="messageErrorSignIn !== ''" class="error-msg">
+                                <i class="fa fa-times-circle"></i> {{messageErrorSignIn}}
+                            </div>
+                            <mat-form-field>
+                                <mat-icon matSuffix>email</mat-icon>
+                                <input type="text" matInput placeholder="Email" formControlName="email">
+                                <mat-error *ngIf="signInService.signInForm.hasError('required', 'email')">
+                                    Xin vui lòng nhập email
+                                </mat-error>
+                                <mat-error *ngIf="signInService.signInForm.hasError('email', 'email')">
+                                    Email không hợp lệ
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-icon matSuffix>vpn_key</mat-icon>
+                                <input type="password" matInput placeholder="Mật khẩu" formControlName="password" autocomplete="password">
+                                <mat-error *ngIf="signInService.signInForm.hasError('required', 'password')">
+                                    Xin vui lòng nhập mật khẩu
+                                </mat-error>
+                                <mat-error *ngIf="signInService.signInForm.hasError('minlength', 'password')">
+                                    Mật khẩu tối thiểu 8 ký tự
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="float-right" mat-raised-button color="success" (click)="signIn()">
+                                Đăng nhập
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Đăng ký">
+        <mat-card>
+            <p class="text-center">Đăng ký để sử dụng mẫu CV</p>
+            <mat-card-content>
+                <div *ngIf="messageErrorSignUp !== ''" class="error-msg">
+                    <i class="fa fa-times-circle"></i> {{messageErrorSignUp}}
+                </div>
+                <form [formGroup]="signInService.signUpForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <mat-icon matSuffix>account_circle</mat-icon>
+                                <input type="text" matInput placeholder="Họ và tên" formControlName="name">
+                                <mat-error *ngIf="signInService.signUpForm.hasError('required', 'name')">
+                                    Xin vui lòng nhập họ và tên
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <mat-icon matSuffix>email</mat-icon>
+                                <input type="text" matInput placeholder="Email" formControlName="email">
+                                <mat-error *ngIf="signInService.signUpForm.hasError('required', 'email')">
+                                    Xin vui lòng nhập email
+                                </mat-error>
+                                <mat-error *ngIf="signInService.signUpForm.hasError('email', 'email')">
+                                    Email không hợp lệ
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <mat-icon matSuffix>vpn_key</mat-icon>
+                                <input type="password" matInput placeholder="Mật khẩu" formControlName="password" autocomplete="password">
+                                <mat-error *ngIf="signInService.signUpForm.hasError('required', 'password')">
+                                    Xin vui lòng nhập mật khẩu
+                                </mat-error>
+                                <mat-error *ngIf="signInService.signUpForm.hasError('minlength', 'password')">
+                                    Mật khẩu tối thiểu 8 ký tự
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <mat-icon matSuffix>vpn_key</mat-icon>
+                                <input type="password" matInput placeholder="Nhập lại mật khẩu" formControlName="passwordConfirm" [errorStateMatcher]="signInService.matcher" autocomplete="passwordConfirm">
+                                <mat-error *ngIf="signInService.signUpForm.hasError('notSame')">
+                                    Mật khẩu xác nhận chưa đúng
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="float-right" mat-raised-button color="success" (click)="signUp()">
+                                Đăng ký
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>

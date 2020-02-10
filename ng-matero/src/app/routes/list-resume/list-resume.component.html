@@ -13,7 +13,7 @@
                                 <img class="img-cv" [src]="'data:image/png;base64,' + item.image" title="" alt="">
                             </a>
                             <div class="overlay-cv">
-                                <a href="" class="">
+                                <a class="" (click)="viewDetailCv()">
                                     <span>
                                         <i class="fa fa-check"></i> Dùng mẫu này
                                     </span>
@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <p class="title-cv">
-                            <a href="" title="Mẫu CV tiếng Anh Cổ Điển 1">{{item.name}}</a>
+                            <a href="" title="{{item.descriptions}}">{{item.name}}</a>
                             <!-- <span class="label label-info">Miễn phí</span> -->
                         </p>
                     </div>

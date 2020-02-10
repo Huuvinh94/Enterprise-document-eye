@@ -177,30 +177,6 @@ input[type=file]::-webkit-file-upload-button {
     }
 }
 
-.btn-floating {
-    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
-    width: 47px;
-    height: 47px;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-    margin: 10px;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    padding: 0;
-    background-color: #ff9800!important;
-    i {
-        font-size: 1.25rem;
-        line-height: 47px;
-        width: inherit;
-        text-align: center;
-        color: #fff;
-    }
-}
-
 @media only screen and (min-width: 481px) and (max-width: 959px) {
     //  ::ng-deep .navbar {
     //     background-color: #1C2331;
@@ -262,11 +238,6 @@ input[type=file]::-webkit-file-upload-button {
     .content-info-cv {
         font-size: 13px;
         a {
-            border: 1px solid #fff;
-            border-radius: 50px;
-            color: #fff;
-            font-weight: 700;
-            padding: 1px 6px;
             font-size: 13px;
         }
     }

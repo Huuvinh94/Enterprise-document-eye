@@ -9,6 +9,7 @@ import { ListResumeComponent } from './list-resume/list-resume.component';
 import { RoutesRoutingModule } from './routes-routing.module';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
+import { SignInPopupComponent } from './sign-in-popup/sign-in-popup.component';
 import { DoSurveyComponent } from './survey/do-survey/do-survey.component';
 
 const COMPONENTS = [
@@ -19,9 +20,10 @@ const COMPONENTS = [
   HomeComponent,
   HeaderComponent,
   ListResumeComponent,
-  FooterComponent
+  FooterComponent,
+  SignInPopupComponent
 ];
-const COMPONENTS_DYNAMIC = [];
+const COMPONENTS_DYNAMIC = [SignInPopupComponent];
 
 @NgModule({
   imports: [SharedModule, RoutesRoutingModule, MDBBootstrapModule.forRoot()],

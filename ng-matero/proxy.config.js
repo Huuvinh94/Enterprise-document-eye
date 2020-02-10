@@ -3,7 +3,9 @@ const PROXY_CONFIG = {
         target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
+        changeOrigin: true,
         logLevel: 'debug',
+        pathRewrite: { '^/api': '' },
         onProxyReq: (proxyReq, req, res) => {
             // const cookieMap = {
             //   SID: '',
