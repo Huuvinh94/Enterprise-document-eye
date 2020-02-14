@@ -1,0 +1,39 @@
+<div class="container-search">
+    <form>
+        <div class="form-group">
+            <label *ngIf="labelSearch" class="header-search">Hơn 100,000+ việc làm hấp dẫn đang tuyển dụng hôm
+                nay</label>
+            <div class="content-search">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col-md-6 pd-input">
+                            <input [(ngModel)]="textSearch" name="textSearch" type="text" class="form-control" placeholder="Nhập việc làm, công ty, kỹ năng...">
+                        </div>
+                        <div class="col-md-2 pd-input">
+                            <!-- <i class="fas fa-list" aria-hidden="true"></i>
+                            <input type="text" class="form-control"> -->
+                            <app-select-dropdown #career [list]="listCareer" [classIcon]="'fas fa-list'" placeholder="Tất cả ngành nghề"></app-select-dropdown>
+                        </div>
+                        <div class="col-md-2 pd-input">
+                            <!-- <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <input type="text" class="form-control"> -->
+                            <app-select-dropdown #location [list]="listLocation" [classIcon]="'fas fa-map-marker-alt'" placeholder="Tất cả địa điểm">
+                            </app-select-dropdown>
+                        </div>
+                        <div class="col-md-2 btn-search pd-input">
+                            <button type="submit" class="btn btn-primary btn-block mb-2" (click)="searchJob()">
+                                <i class="fas fa-search mr-1" aria-hidden="true"></i>
+                                Tìm việc
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="float-right search-plus">
+                <a class="btn btn-default" routerLink="/list-resume">
+                    <i class="fas fa-search-plus mr-1" aria-hidden="true"></i> Tìm kiếm nâng cao
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

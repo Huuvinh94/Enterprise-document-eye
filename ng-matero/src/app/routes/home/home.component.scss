@@ -4,58 +4,13 @@
 // ::ng-deep .top-nav-collapse {
 //     background-color: #1C2331 !important;
 // }
-.container-search {
+::ng-deep app-search-job .container-search {
     position: absolute;
     top: 35%;
-    width: 100%;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
     form {
-        width: 60%;
-        .header-upload {
-            font-size: 35px;
-            color: #ffffff;
-        }
-        .content-search {
-            background-color: transparent;
-            border-radius: 5px;
-            border: 14px solid rgba(0, 0, 0, 0.35);
-            align-items: center;
-            display: flex;
-        }
-        .custom-file {
-            height: 45px;
-        }
+        width: 80%;
+        background-color: rgba(20, 32, 25, 0.65);
     }
-    .custom-file-input {
-        ~.custom-file-label {
-            height: 45px;
-            align-items: center;
-            display: flex;
-            &::after {
-                height: 43px;
-                align-items: center;
-                display: flex;
-                content: "Chọn tập tin...";
-                background-color: #00c851;
-                border: 1px solid #00c851;
-            }
-        }
-    }
-}
-
-.custom-file-control.selected:lang(en)::after {
-    content: "" !important;
-}
-
-
-/* FF, IE7+, chrome (except button) */
-
-input[type=file],
-input[type=file]::-webkit-file-upload-button {
-    /* chromes and blink button */
-    cursor: pointer;
 }
 
 .carousel {
@@ -78,6 +33,11 @@ input[type=file]::-webkit-file-upload-button {
         background-size: 100%, 100%;
         border: 1px solid #2d96cd;
     }
+}
+
+::ng-deep .header-carousel .carousel-control-prev,
+::ng-deep .header-carousel .carousel-control-next {
+    display: none;
 }
 
 .top-city-trending {
@@ -163,82 +123,24 @@ input[type=file]::-webkit-file-upload-button {
     }
 }
 
-.content-info-cv {
-    a {
-        border-radius: 50px;
-        color: #fff;
-        padding: 2px 15px;
-        font-size: 15px;
-        background: rgb(255, 81, 78);
-        border-width: initial;
-        border-style: initial;
-        border-color: transparent;
-        border-image: initial;
-    }
-}
-
-@media only screen and (min-width: 481px) and (max-width: 959px) {
-    //  ::ng-deep .navbar {
-    //     background-color: #1C2331;
-    // }
-    .container-search {
-        form {
-            .header-upload {
-                font-size: 20px;
-            }
-            .content-search {
-                border: 8px solid rgba(0, 0, 0, 0.35);
-            }
-            .custom-file {
-                height: 32px;
-            }
-        }
-        .custom-file-input {
-            ~.custom-file-label {
-                height: 32px;
-                &::after {
-                    height: 31px;
-                }
-            }
-        }
-    }
-}
-
+// @media only screen and (min-width: 481px) and (max-width: 959px) {
+//     .container-search {
+//         form {
+//         }
+//     }
+// }
 @media only screen and (max-width: 768px) {
-    //  ::ng-deep .navbar {
-    //     background-color: #1C2331;
-    // }
-     ::ng-deep .carousel img {
-        height: 50vh;
+     ::ng-deep .header-carousel {
+        -ms-touch-action: pan-y !important;
+        touch-action: pan-y !important;
+        .carousel img {
+            height: 485px;
+        }
     }
-    .container-search {
-        top: 40%;
+     ::ng-deep app-search-job .container-search {
+        top: 70px;
         form {
             width: 80%;
-            .header-upload {
-                font-size: 15px;
-            }
-            .content-search {
-                border: 6px solid rgba(0, 0, 0, 0.35);
-            }
-            .custom-file {
-                height: 32px;
-            }
-        }
-        .custom-file-input {
-            ~.custom-file-label {
-                height: 32px;
-                &::after {
-                    content: '...';
-                    height: 31px;
-                }
-            }
-        }
-    }
-    .content-info-cv {
-        font-size: 13px;
-        a {
-            font-size: 13px;
         }
     }
     .carousel-inner .card {

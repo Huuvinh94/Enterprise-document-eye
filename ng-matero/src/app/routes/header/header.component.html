@@ -1,4 +1,4 @@
-<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" [containerInside]="true">
+<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-primar" [containerInside]="true">
 
     <!-- Brand -->
     <mdb-navbar-brand class="mr-2">
@@ -18,8 +18,13 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Dịch vụ</a>
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                    Tìm việc làm<span class="caret"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Việc làm mới nhất</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Ngành nghề / Địa điểm</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Về chúng tôi</a>

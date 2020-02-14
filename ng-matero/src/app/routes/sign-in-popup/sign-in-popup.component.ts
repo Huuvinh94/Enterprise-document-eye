@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SignInService } from '@core/services/sign-in.service';
 
@@ -15,7 +15,9 @@ export class SignInPopupComponent implements OnInit {
   messageErrorSignUp = '';
   cols: number;
   rowHeight: string | number;
+  labelHeader = 'mẫu CV';
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public signInService: SignInService,
     private router: Router,
     private dialogRef: MatDialogRef<SignInPopupComponent>,
@@ -27,6 +29,7 @@ export class SignInPopupComponent implements OnInit {
   ngOnInit() {
     this.signInService.signInForm.reset();
     this.signInService.signUpForm.reset();
+    this.labelHeader = this.data.labelHeader;
   }
 
   /**

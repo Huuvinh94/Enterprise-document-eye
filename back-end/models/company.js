@@ -2,7 +2,7 @@ const mongoose = require('../service/mongoose.service').mongoose;
 
 const Schema = mongoose.Schema;
 
-const companyTopTrendingSchema = new Schema({
+const companySchema = new Schema({
     companyCode: Number,
     companyName: String,
     state: String,
@@ -17,4 +17,4 @@ const companyTopTrendingSchema = new Schema({
     level: Number
 });
 
-module.exports = mongoose.model('company_top_trending', companyTopTrendingSchema, 'company_top_trending');
+module.exports = mongoose.model('company', companySchema, 'company');

@@ -4,10 +4,12 @@ const SurveysRouter = require('./survey.config');
 const CareerRouter = require('./career.config');
 const QuestionRouter = require('./question.config');
 const AnswerSurvey = require('./answerSurvey.config');
-const CityTopTrending = require('./company_top_trending.config');
+const City = require('./company.config');
 const Rating = require('./rating.config');
 const TemplateResume = require('./template_resume.config');
 const MembersRouter = require('./member.config');
+const LocationRouter = require('./location.config');
+const SearchJobRouter = require('./job.config');
 
 exports.middleWaresConfig = function(app, upload) {
     // Routes config user
@@ -24,11 +26,15 @@ exports.middleWaresConfig = function(app, upload) {
 
     AnswerSurvey.routesConfig(app);
 
-    CityTopTrending.routesConfig(app);
+    City.routesConfig(app);
 
     Rating.routesConfig(app);
 
     TemplateResume.routesConfig(app);
 
     MembersRouter.routesConfig(app);
+
+    LocationRouter.routesConfig(app);
+
+    SearchJobRouter.routesConfig(app);
 }

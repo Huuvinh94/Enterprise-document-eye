@@ -1,0 +1,66 @@
+.container-search {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    form {
+        width: 60%;
+        .header-upload {
+            font-size: 35px;
+            color: #ffffff;
+        }
+        .content-search {
+            background-color: transparent;
+            border-radius: 5px;
+            border: 14px solid rgba(0, 0, 0, 0.35);
+            align-items: center;
+            display: flex;
+        }
+        .custom-file {
+            height: 45px;
+        }
+    }
+    .custom-file-input {
+        ~.custom-file-label {
+            height: 45px;
+            align-items: center;
+            display: flex;
+            &::after {
+                height: 43px;
+                align-items: center;
+                display: flex;
+                content: "Chọn tập tin...";
+                background-color: #00c851;
+                border: 1px solid #00c851;
+            }
+        }
+    }
+    .content-info-cv {
+        a {
+            border-radius: 50px;
+            color: #fff;
+            padding: 2px 15px;
+            font-size: 15px;
+            background: rgb(255, 81, 78);
+            border-width: initial;
+            border-style: initial;
+            border-color: transparent;
+            border-image: initial;
+        }
+    }
+}
+
+.custom-file-control.selected:lang(en)::after {
+    content: "" !important;
+}
+
+
+/* FF, IE7+, chrome (except button) */
+
+input[type=file],
+input[type=file]::-webkit-file-upload-button {
+    /* chromes and blink button */
+    cursor: pointer;
+}

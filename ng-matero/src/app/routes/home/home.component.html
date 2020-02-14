@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <app-header></app-header>
-<mdb-carousel [isControls]="isDesktopDevice" class="carousel slide carousel-fade" [animation]="'fade'">
+<mdb-carousel [isControls]="isDesktopDevice" class="carousel slide carousel-fade header-carousel" [animation]="'fade'">
     <div>
         <mdb-carousel-item>
             <div class="view w-100">
@@ -33,36 +33,7 @@
             </div>
         </mdb-carousel-item>
     </div>
-    <div class="container-search">
-        <form>
-            <div class="form-group">
-                <label class="header-upload">Tìm kiếm công việc mơ ước</label>
-                <div class="content-search">
-                    <div class="input-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupFileAdd" title="Upload cv"><i
-                                        class="fa fa-upload" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="custom-file">
-                                <input #fileUpload type="file" class="custom-file-input form-control" id="inputGroupFileUpload" aria-describedby="inputGroupFileAdd" accept="application/pdf,application/vnd.ms-excel" title="Chọn file upload" (change)="changeFileUpload($event)">
-                                <label class="custom-file-label form-control-file" for="inputGroupFileUpload">
-                                    {{labelInfoFile}}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-2 float-right content-info-cv">
-                    <label class="info-apply text-white mr-2">Bạn chưa có cv?</label>
-                    <a class="btn btn-default" routerLink="/list-resume">
-                        <i class="fas fa-plus mr-1" aria-hidden="true"></i> Tạo cv miễn phí
-                    </a>
-                </div>
-            </div>
-        </form>
-    </div>
+    <app-search-job></app-search-job>
 </mdb-carousel>
 <main>
     <div class="container">
@@ -76,7 +47,7 @@
             <div class="row pb-3">
 
                 <!--Grid column-->
-                <div *ngFor="let item of listCompanyTopTrending" class="col-lg-3 col-md-6 mb-4 wow fadeIn pl-2 pr-2 top-city-trending" data-wow-delay="0.4s">
+                <div *ngFor="let item of listCompany" class="col-lg-3 col-md-6 mb-4 wow fadeIn pl-2 pr-2 top-city-trending" data-wow-delay="0.4s">
 
                     <!--Card Light-->
                     <div class="card">

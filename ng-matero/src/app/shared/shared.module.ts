@@ -15,6 +15,9 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ErrorCodeComponent } from './components/error-code/error-code.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { SearchJobComponent } from './components/search-job/search-job.component';
+import { SelectDropdownComponent } from './components/select-dropdown/select-dropdown.component';
+import { TextSearchPipe } from './pipes/text-search.pipe';
 
 
 
@@ -33,11 +36,13 @@ const COMPONENTS = [
   BreadcrumbComponent,
   PageHeaderComponent,
   ErrorCodeComponent,
-  ConfirmDialogComponent
+  ConfirmDialogComponent,
+  SelectDropdownComponent,
+  SearchJobComponent
 ];
 const COMPONENTS_DYNAMIC = [ConfirmDialogComponent];
 const DIRECTIVES = [];
-const PIPES = [];
+const PIPES = [TextSearchPipe];
 
 @NgModule({
   declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES, ...COMPONENTS_DYNAMIC],

@@ -1,0 +1,61 @@
+<app-header></app-header>
+<main class="pt-5 mt-5 mb-5">
+    <div class="container-fluid">
+        <!--Section: Blog v.2-->
+        <section class="extra-margins">
+            <app-search-job [labelSearch]="false" (handlerSearch)=searchJob($event)></app-search-job>
+            <div class="container-job">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="container-fluid row head-job mb-3 mr-0 ml-0">
+                            <div class="total-job">
+                                <span>50 công việc phù hợp</span>
+                            </div>
+                            <div class="sort-job">
+                                <span>
+                                    Sắp xếp theo
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngFor="let item of listJob" class="container-fluid row list-job mb-3 mr-0 ml-0 align-items-center">
+                            <div class="col-2">
+                                <img src="https://images.vietnamworks.com/pictureofcompany/c8/10291512.png" alt="">
+                            </div>
+                            <div class="col-10 info-job">
+                                <div class="row mr-0">
+                                    <div class="col-11">
+                                        {{item.jobTitle}}
+                                    </div>
+                                    <div class="col-1 px-0">
+                                        <i class="far fa-heart" aria-hidden="true" (click)="saveJob()"></i>
+                                        <!-- <i class="fas fa-heart" aria-hidden="true"></i> -->
+                                    </div>
+                                </div>
+                                <div class="row mr-0">
+                                    <div class="col-12">
+                                        {{item.companyName}}
+                                    </div>
+                                </div>
+                                <div class="row mr-0">
+                                    <div class="col-12">
+                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{item.location}}
+                                    </div>
+                                </div>
+                                <div class="row mr-0">
+                                    <div class="col-9">
+                                        <i class="fas fa-dollar-sign" aria-hidden="true"></i> Lương: {{item.salary}}
+                                    </div>
+                                    <div class="col-3 px-0">
+                                        Đã đăng: {{item.postedDate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </section>
+    </div>
+</main>
+<app-footer></app-footer>

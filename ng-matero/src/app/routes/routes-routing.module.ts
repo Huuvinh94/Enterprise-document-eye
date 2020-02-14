@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { environment } from '@env/environment';
 import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
 import { HomeComponent } from './home/home.component';
+import { FindJobComponent } from './job/find-job/find-job.component';
 import { ListResumeComponent } from './list-resume/list-resume.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
 import { DoSurveyComponent } from './survey/do-survey/do-survey.component';
+import { UploadResumeComponent } from './upload-resume/upload-resume.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: 'list-resume',
     component: ListResumeComponent
+  },
+  {
+    path: 'upload-resume',
+    component: UploadResumeComponent
+  },
+  {
+    path: 'find-job',
+    component: FindJobComponent
   },
   // {
   //   path: 'dashboard',

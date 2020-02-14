@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '@env/environment';
 import { Common } from 'app/common/common';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -15,7 +14,7 @@ export class RatingService {
     ) { }
 
     getRating() {
-        return this.http.get<any>(environment.SERVER_URL + '/getRating')
+        return this.http.get<any>('/api/getRating')
             .pipe(map((res: any) => {
                 if (res && res.statusCode === 200 && res.data) {
                     return res.data;
