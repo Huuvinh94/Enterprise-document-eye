@@ -6,6 +6,7 @@ const multer = require('multer');
 const upload = multer();
 const mainConfig = require('./routes/main.config');
 const config = require('./common/config/env.config.js');
+
 app.use(cors());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies

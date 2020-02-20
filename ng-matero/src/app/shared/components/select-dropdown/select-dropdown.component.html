@@ -7,11 +7,12 @@
         </span>
     </div>
     <div class="dd-list-container" [hidden]="isListHide">
-        <div><input type="text" class="drop-input" [(ngModel)]="searchText" (keypress)="onKeyPress($event)" #filterInput></div>
-        <div class="dd-items-container">
-            <div [attr.data-dd-value]="{id:'', text:'Select'}" class="dd-list-item" (click)="onItemSelect()" (mouseover)="onHover($event)" (mouseout)="onHover($event)">{{placeholder}}</div>
-            <div #listItems [ngClass]=" { 'dd-active dd-hightlight-item' :isSelected(item)} " class="dd-list-item " *ngFor="let item
-			 of items | textSearch : searchText; let i=index;" (click)="onItemSelect(item)" [attr.data-dd-value]="stringify(item)" (mouseover)="onHover($event)" (mouseout)="onHover($event)">
+        <div *ngIf="isFilter"><input type="text" class="drop-input" [(ngModel)]="searchText" (keypress)="onKeyPress($event)" #filterInput></div>
+        <div class="dd-items-container" [ngClass]="isFilter ? 'space-item' : ''">
+            <div *ngIf="isFilter" [attr.data-dd-value]="{id:'', text:'Select'}" class="dd-list-item" (click)="onItemSelect()" (mouseover)="onHover($event)" (mouseout)="onHover($event)">{{placeholder}}
+            </div>
+            <div #listItems [ngClass]=" { 'dd-active dd-hightlight-item' :isSelected(item)} " class="dd-list-item" *ngFor="let item
+             of list | textSearch : searchText; let i=index;" (click)="onItemSelect(item)" [attr.data-dd-value]="stringify(item)" (mouseover)="onHover($event)" (mouseout)="onHover($event)">
                 {{item?.text}}
             </div>
         </div>

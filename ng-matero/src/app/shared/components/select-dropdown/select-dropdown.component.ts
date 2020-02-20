@@ -1,6 +1,6 @@
-import { Component, ElementRef, forwardRef, HostListener, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 const KEY_CODE = {
@@ -26,22 +26,22 @@ const CSS_CLASS_NAMES = {
     }
   ]
 })
-export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
-  @Input()
-  set list(list: any[]) {
-    this._list.next(list);
-  }
+export class SelectDropdownComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+  // set list(list: any[]) {
+  //   this._list.next(list);
+  // }
 
-  set items(list) {
-    this._items = list;
-  }
-  get items(): Array<{ id: number, text: string }> {
-    return this._items;
-  }
+  // set items(list) {
+  //   this._items = list;
+  // }
+  // get items(): Array<{ id: number, text: string }> {
+  //   return this._items;
+  // }
   get value() {
     return this._value;
   }
 
+  @Input()
   set value(val) {
     this._value = val;
   }
@@ -58,11 +58,11 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
   @ViewChild('filterInput', { static: false }) filterInput: ElementRef;
   @ViewChild('textLabel', { static: false }) textLabel: ElementRef;
   @ViewChildren('listItems') listItems: QueryList<ElementRef>;
-  _items = [];
-
-  _list = new BehaviorSubject<any[]>([]);
+  @Input() list: any[];
   @Input() placeholder = 'Select';
   @Input() classIcon = '';
+  @Input() isFilter = true;
+  @Output() handlerOnchange: EventEmitter<any> = new EventEmitter<any>();
   _value: string;
   _text = 'Select';
 
@@ -78,14 +78,6 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
   onTouched: any = () => { };
 
   ngOnInit() {
-    setTimeout(() => {
-
-      this._list.subscribe((list) => {
-        this.items = list;
-        this.setItem(this.findItem(this.value));
-      });
-    }, 100);
-
     this.pressEnterKey.pipe(filter(() => !this.isListHide)).subscribe(() => {
       const hightLightItem = this.listItems.find((elem) => elem.nativeElement.classList.contains(CSS_CLASS_NAMES.highLight));
       if (hightLightItem) {
@@ -109,6 +101,12 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
     });
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.setItem(this.findItem(this.value));
+    }, 200);
+  }
+
   scrollToView(elem?: HTMLElement) {
     if (elem) {
       setTimeout(() => { elem.scrollIntoView(false); }, 0);
@@ -123,7 +121,7 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
   toggle() {
     this.isListHide = !this.isListHide;
     this.searchText = '';
-    if (!this.isListHide) {
+    if (!this.isListHide && this.isFilter) {
       setTimeout(() => this.filterInput.nativeElement.focus(), 0);
       this.listItems.forEach((item) => {
         if (JSON.parse(item.nativeElement.getAttribute('data-dd-value')).id === this.value) {
@@ -141,13 +139,15 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
   }
 
   onItemSelect(item: { id: any; }) {
-    this.setItem(item);
-    this.toggle();
-    if (item !== undefined) {
+
+    if (item !== undefined && item.id !== this.value) {
       this.onChange(item.id);
+      this.handlerOnchange.emit(item.id);
     } else {
       this.onChange('');
     }
+    this.setItem(item);
+    this.toggle();
     this.focus();
   }
 
@@ -160,7 +160,7 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
   }
 
   findItem(value: string) {
-    return this.items.find((item) => +item.id === +value);
+    return this.list.find((item) => +item.id === +value);
   }
 
   writeValue(value: string) {
@@ -171,15 +171,18 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
 
   setItem(item: { id: any; text?: any; }) {
     if (item) {
-      if (item.id) {
+      if (item.id !== '') {
         this.value = item.id;
       }
-      if (item.text) {
+      if (item.text !== '') {
         this.text = item.text;
       }
     } else {
       this.value = '';
-      this.text = this.placeholder;
+      this.text = '';
+      if (this.isFilter) {
+        this.text = this.placeholder;
+      }
     }
   }
 
@@ -244,11 +247,7 @@ export class SelectDropdownComponent implements OnInit, ControlValueAccessor {
   onHover(event: MouseEvent) {
     this.clearHightClass();
     const target = event.target as HTMLElement;
-    if (event.type === 'mouseover') {
-      target.classList.add(CSS_CLASS_NAMES.highLight);
-    } else {
-      target.classList.remove(CSS_CLASS_NAMES.highLight);
-    }
+    target.classList.toggle(CSS_CLASS_NAMES.highLight);
   }
 
   clearHightClass() {

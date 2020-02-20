@@ -108,6 +108,11 @@ export class SignInService {
       }));
   }
 
+  handlerSignOut() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   getCurrentUser() {
     const info = localStorage.getItem(Constant.INFO_LOGIN);
     if (info !== null && info !== undefined) {

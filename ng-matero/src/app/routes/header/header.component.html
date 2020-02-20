@@ -1,65 +1,79 @@
-<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-primar" [containerInside]="true">
+<div class="container-fluid">
+    <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-primar" [containerInside]="false">
 
-    <!-- Brand -->
-    <mdb-navbar-brand class="mr-2">
-        <!-- <a class="navbar-brand" routerLink="/home">
-                <strong>I2ICORP</strong>
-            </a> -->
-        <a routerLink="/home">
-            <img class="img-header" src="assets/images/i2i-logo-only-ideas-to-Innovation.png" alt="">
-        </a>
-    </mdb-navbar-brand>
-    <links>
+        <!-- Brand -->
+        <mdb-navbar-brand class=" mr-2">
+            <!-- <a class="navbar-brand" routerLink="/home">
+                    <strong>I2ICORP</strong>
+                </a> -->
+            <a routerLink="/home">
+                <img class="img-header" src="assets/images/i2i-logo-only-ideas-to-Innovation.png" alt="">
+            </a>
+        </mdb-navbar-brand>
+        <links>
 
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="/home">Trang chủ
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item dropdown" dropdown>
-                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-                    Tìm việc làm<span class="caret"></span></a>
-                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Việc làm mới nhất</a>
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Ngành nghề / Địa điểm</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Về chúng tôi</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Liên hệ</a>
-            </li>
-        </ul>
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/home">Trang chủ
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" dropdown>
+                    <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                        Tìm việc làm<span class="caret"></span></a>
+                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Việc làm mới nhất</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Ngành nghề / Địa điểm</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Về chúng tôi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Liên
+                        hệ</a>
+                </li>
+            </ul>
 
-        <!-- Right -->
-        <ul class="nav navbar-nav nav-flex-icons ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbar-tools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-globe"></i><span class="d-none d-xl-inline-block ml-1">Ngôn ngữ</span></a>
-                <div class="w-50 dropdown-menu dropdown-menu-right dropdown-info">
-                    <a class="dropdown-item waves-effect waves-light" href="#">Tiếng Việt</a>
-                    <a class="dropdown-item waves-effect waves-light" href="#">English</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded" target="_blank">
-                    <i class="fab fa-github mr-2"></i>I2ICORP
-                </a>
-            </li>
-        </ul>
+            <!-- Right -->
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbar-tools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe"></i><span class="d-none d-xl-inline-block ml-1">Ngôn ngữ</span></a>
+                    <div class="w-50 dropdown-menu dropdown-menu-right dropdown-info">
+                        <a class="dropdown-item waves-effect waves-light" href="#">Tiếng Việt</a>
+                        <a class="dropdown-item waves-effect waves-light" href="#">English</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded" target="_blank">
+                        <i class="fab fa-github mr-2"></i>I2ICORP
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="signInPopup()" *ngIf="!signIn.signedIn();else signOut">
+                        <i class="fas fa-sign-in-alt" title="Đăng nhập"></i> Đăng nhập
+                    </a>
+                    <ng-template #signOut>
+                        <a class="nav-link" (click)="signIn.handlerSignOut()">
+                            <i class="fas fa-user" title="Đăng xuất"></i>
+                        </a>
+                    </ng-template>
 
-    </links>
-</mdb-navbar>
+                </li>
+            </ul>
+
+        </links>
+    </mdb-navbar>
+</div>

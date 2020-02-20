@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "styles/app";
 * {
     font-family: Roboto, "Segoe UI", BlinkMacSystemFont, -apple-system, sans-serif;
+    // font-size: 15px;
 }
 
+@import "styles/app";
 .success-sackBar {
     background-color: rgb(12, 163, 12);
 }

@@ -7,21 +7,21 @@
                 <div class="w-100">
                     <div class="row">
                         <div class="col-md-6 pd-input">
-                            <input [(ngModel)]="textSearch" name="textSearch" type="text" class="form-control" placeholder="Nhập việc làm, công ty, kỹ năng...">
+                            <input [(ngModel)]="textSearch" name="textSearch" type="text" class="form-control" placeholder="Nhập việc làm, công ty, kỹ năng..." autocomplete="off">
                         </div>
                         <div class="col-md-2 pd-input">
                             <!-- <i class="fas fa-list" aria-hidden="true"></i>
                             <input type="text" class="form-control"> -->
-                            <app-select-dropdown #career [list]="listCareer" [classIcon]="'fas fa-list'" placeholder="Tất cả ngành nghề"></app-select-dropdown>
+                            <app-select-dropdown #career [value]="careerId" [list]="listCareer" [classIcon]="'fas fa-list'" placeholder="Tất cả ngành nghề"></app-select-dropdown>
                         </div>
                         <div class="col-md-2 pd-input">
                             <!-- <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             <input type="text" class="form-control"> -->
-                            <app-select-dropdown #location [list]="listLocation" [classIcon]="'fas fa-map-marker-alt'" placeholder="Tất cả địa điểm">
+                            <app-select-dropdown #location [value]="locationId" [list]="listLocation" [classIcon]="'fas fa-map-marker-alt'" placeholder="Tất cả địa điểm">
                             </app-select-dropdown>
                         </div>
                         <div class="col-md-2 btn-search pd-input">
-                            <button type="submit" class="btn btn-primary btn-block mb-2" (click)="searchJob()">
+                            <button type="submit" class="btn btn-block mb-2" (click)="searchJob()">
                                 <i class="fas fa-search mr-1" aria-hidden="true"></i>
                                 Tìm việc
                             </button>

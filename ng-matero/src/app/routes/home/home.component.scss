@@ -4,7 +4,7 @@
 // ::ng-deep .top-nav-collapse {
 //     background-color: #1C2331 !important;
 // }
-::ng-deep app-search-job .container-search {
+::ng-deep app-search-job.search-job .container-search {
     position: absolute;
     top: 35%;
     form {
@@ -137,7 +137,7 @@
             height: 485px;
         }
     }
-     ::ng-deep app-search-job .container-search {
+     ::ng-deep app-search-job.search-job .container-search {
         top: 70px;
         form {
             width: 80%;

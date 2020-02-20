@@ -1,5 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HomeService } from '@core/services/home.service';
 import { RatingService } from '@core/services/rating.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
     private locationService: LocationService,
     private breakpointObserver: BreakpointObserver,
     public deviceService: DeviceDetectorService,
+    private router: Router
   ) { }
 
   /**
@@ -73,6 +75,20 @@ export class HomeComponent implements OnInit {
         }
         this.isDesktopDevice = checkResize;
       });
+  }
+
+  /**
+   * Search job
+   */
+  searchJob() {
+    // const navigationExtras: NavigationExtras = {
+    //   queryParams: {
+    //     paramSearch: encodeURIComponent(JSON.stringify({
+    //       dataSearch
+    //     }))
+    //   }
+    // };
+    this.router.navigate(['/find-job']);
   }
 
   /**

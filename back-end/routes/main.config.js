@@ -10,6 +10,7 @@ const TemplateResume = require('./template_resume.config');
 const MembersRouter = require('./member.config');
 const LocationRouter = require('./location.config');
 const SearchJobRouter = require('./job.config');
+const SaveJobRouter = require('./save_job.config');
 
 exports.middleWaresConfig = function(app, upload) {
     // Routes config user
@@ -37,4 +38,6 @@ exports.middleWaresConfig = function(app, upload) {
     LocationRouter.routesConfig(app);
 
     SearchJobRouter.routesConfig(app);
+
+    SaveJobRouter.routesConfig(app);
 }

@@ -1,13 +1,28 @@
 const Job = require('../models/job');
+const ObjectId = require('mongodb').ObjectID;
+const moment = require('moment');
+const common = require('../utils/common');
+const paginate = require('jw-paginate');
+const RECORD_DISPLAY = 5;
 
 exports.searchJob = (req, res) => {
-    const valueSearch = req.body;
-    const textSearch = valueSearch.textSearch.toString();
-    const career = valueSearch.career.toString();
-    const location = valueSearch.location.toString();
-    const conditionSearch = [];
+    const valueRequest = req.body;
+    const textSearch = valueRequest.textSearch.toString();
+    const careerId = valueRequest.careerId;
+    const locationId = valueRequest.locationId;
+    let filter = { 'salary': -1 };
+    const conditionSearch = {};
+    let skip = 0;
+    let limit = RECORD_DISPLAY;
+    if (valueRequest.page && valueRequest.page != 1) {
+        skip = (valueRequest.page - 1) * RECORD_DISPLAY;
+    }
+
+    const infoMember = common.getInfoMember(req);
+
     if (textSearch != '') {
-        conditionSearch.push({
+        conditionSearch['$or'] = [];
+        conditionSearch['$or'].push({
             'resCompany.companyName': {
                 $regex: textSearch,
                 $options: 'i'
@@ -22,19 +37,32 @@ exports.searchJob = (req, res) => {
                 $regex: textSearch,
                 $options: 'i'
             }
-        }, )
-    }
-
-    if (career != '') {
-        conditionSearch.push({
-            'career': Number(career)
-        })
-    }
-
-    if (location != '') {
-        conditionSearch.push({
-            'location': Number(location)
+        }, {
+            'jobTitle': {
+                $regex: textSearch,
+                $options: 'i'
+            }
         });
+    }
+
+    if (careerId != '' || locationId != '') {
+        conditionSearch['$and'] = [];
+    }
+
+    if (careerId != '') {
+        conditionSearch['$and'].push({
+            'career': Number(careerId)
+        });
+    }
+
+    if (locationId != '') {
+        conditionSearch['$and'].push({
+            'location': Number(locationId)
+        });
+    }
+
+    if (valueRequest.filter === 0) {
+        filter = { 'postedDate': -1 };
     }
 
     Job.aggregate(
@@ -47,18 +75,12 @@ exports.searchJob = (req, res) => {
                 }
             },
             {
-                $unwind: '$resCompany'
-            },
-            {
                 $lookup: {
                     from: 'location',
                     localField: 'location',
                     foreignField: 'cityId',
                     as: 'resLocation'
                 }
-            },
-            {
-                $unwind: '$resLocation'
             },
             {
                 $lookup: {
@@ -69,12 +91,24 @@ exports.searchJob = (req, res) => {
                 }
             },
             {
-                $unwind: '$resCareer'
+                $lookup: {
+                    from: 'save_job',
+                    let: {
+                        jobId: '$jobId'
+                    },
+                    pipeline: [{
+                        $match: {
+                            $expr: {
+                                $eq: ['$jobId', '$$jobId']
+                            },
+                            memberId: infoMember.memberId != '' ? ObjectId(infoMember.memberId) : ''
+                        }
+                    }],
+                    as: 'resSaveJob'
+                }
             },
             {
-                $match: {
-                    $or: conditionSearch
-                }
+                $match: conditionSearch
             },
             {
                 $project: {
@@ -87,29 +121,55 @@ exports.searchJob = (req, res) => {
                     'resCompany.companyName': 1,
                     'resCompany.image': 1,
                     'resLocation.cityName': 1,
-
+                    'resSaveJob': 1
+                }
+            }, {
+                $sort: filter
+            },
+            {
+                "$facet": {
+                    "totalData": [{
+                            "$skip": skip
+                        },
+                        {
+                            "$limit": limit
+                        }
+                    ],
+                    "totalCount": [{
+                        "$count": "count"
+                    }]
                 }
             }
+
         ], (err, resSearch) => {
             if (err) {
                 console.log(err);
             } else {
                 if (resSearch) {
                     const data = [];
-                    resSearch.forEach(job => {
+                    resSearch[0].totalData.forEach(job => {
                         data.push({
                             jobId: job.jobId,
                             jobTitle: job.jobTitle,
-                            postedDate: job.postedDate,
+                            postedDate: job.postedDate != null ? moment(job.postedDate).format("DD/MM/YYYY") : '',
                             salaryType: job.salaryType,
                             salaryCurrency: job.salaryCurrency,
                             salary: job.salary,
-                            companyName: job.resCompany.companyName,
-                            image: job.resCompany.image,
-                            location: job.resLocation.cityName
-                        })
+                            companyName: job.resCompany[0].companyName,
+                            logoImage: job.resCompany[0].image,
+                            location: job.resLocation[0].cityName,
+                            saveJob: job.resSaveJob.length > 0 ? true : false
+                        });
                     });
-                    res.send({ 'statusCode': 200, 'statusText': 'Success', data });
+
+                    // get page from query params or default to first page
+                    const page = parseInt(valueRequest.page) || 1;
+
+                    const totalItem = resSearch[0].totalCount.length > 0 ? resSearch[0].totalCount[0].count : 0;
+                    // get pager object for specified page
+                    const pager = paginate(totalItem, page, RECORD_DISPLAY, 5);
+
+                    res.send({ 'statusCode': 200, 'statusText': 'Success', data, pager, totalItem });
                 }
             }
         });

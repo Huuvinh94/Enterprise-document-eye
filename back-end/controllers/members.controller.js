@@ -1,6 +1,6 @@
 const Member = require('../models/member');
 const jwt = require('jsonwebtoken');
-const secret = require('../common/config/env.config').jwt_secret;
+const config = require('../common/config/env.config');
 const common = require('../utils/common');
 
 exports.signIn = (req, res) => {
@@ -16,18 +16,18 @@ exports.signIn = (req, res) => {
                     if (same) {
 
                         const payload = { sub: resMember._id, email: resMember.email };
-                        const token = jwt.sign(payload, secret);
+                        const token = jwt.sign(payload, config.jwt_secret, { expiresIn: config.jwt_expiration_in_seconds });
 
                         const memberWithoutPassword = {
-                            userId: resMember._id,
+                            memberId: resMember._id,
                             email: resMember.email,
                             name: resMember.name
                         };
 
-                        res.send({ 'statusCode': 200, 'statusText': 'Đăng nhập thành công!!', info: Buffer.from(JSON.stringify({ member: memberWithoutPassword, token })).toString('base64') });
+                        return res.send({ 'statusCode': 200, 'statusText': 'Đăng nhập thành công!!', info: Buffer.from(JSON.stringify({ member: memberWithoutPassword, token })).toString('base64') });
 
                     } else {
-                        res.send({ 'statusCode': 401, 'statusText': 'Mật khẩu không chính xác' });
+                        return res.send({ 'statusCode': 401, 'statusText': 'Mật khẩu không chính xác' });
                     }
                 });
             }
@@ -54,7 +54,7 @@ exports.signUp = (req, res) => {
                             console.log(err);
                         } else {
                             const payload = { sub: member._id, email: member.email };
-                            const token = jwt.sign(payload, secret);
+                            const token = jwt.sign(payload, config.jwt_secret);
 
                             const memberWithoutPassword = {
                                 userId: member._id,

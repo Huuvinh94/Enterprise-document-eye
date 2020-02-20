@@ -1,7 +1,7 @@
 <mat-tab-group>
     <mat-tab label="Đăng nhập">
         <mat-card>
-            <p class="text-center">Đăng nhập để sử dụng {{labelHeader}}</p>
+            <p class="text-center" *ngIf="labelHeader != ''">Đăng nhập {{labelHeader}}</p>
             <mat-card-content>
                 <form [formGroup]="signInService.signInForm">
                     <div class="row">
@@ -59,7 +59,7 @@
     </mat-tab>
     <mat-tab label="Đăng ký">
         <mat-card>
-            <p class="text-center">Đăng ký để sử dụng {{labelHeader}}</p>
+            <p class="text-center" *ngIf="labelHeader != ''">Đăng ký {{labelHeader}}</p>
             <mat-card-content>
                 <div *ngIf="messageErrorSignUp !== ''" class="error-msg">
                     <i class="fa fa-times-circle"></i> {{messageErrorSignUp}}

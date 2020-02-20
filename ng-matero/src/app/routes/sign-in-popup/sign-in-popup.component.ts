@@ -15,7 +15,7 @@ export class SignInPopupComponent implements OnInit {
   messageErrorSignUp = '';
   cols: number;
   rowHeight: string | number;
-  labelHeader = 'mẫu CV';
+  labelHeader = '';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public signInService: SignInService,
@@ -29,7 +29,7 @@ export class SignInPopupComponent implements OnInit {
   ngOnInit() {
     this.signInService.signInForm.reset();
     this.signInService.signUpForm.reset();
-    this.labelHeader = this.data.labelHeader;
+    this.labelHeader = this.data !== null ? this.data.labelHeader : '';
   }
 
   /**
@@ -45,7 +45,6 @@ export class SignInPopupComponent implements OnInit {
             this.messageErrorSignIn = res.statusText;
           } else {
             this.dialogRef.close(true);
-            this.router.navigate(['/new-resume']);
           }
         },
         err => {

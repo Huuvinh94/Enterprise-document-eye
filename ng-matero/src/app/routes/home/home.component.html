@@ -33,9 +33,11 @@
             </div>
         </mdb-carousel-item>
     </div>
-    <app-search-job></app-search-job>
 </mdb-carousel>
+<app-search-job class="search-job" (handlerSearch)=searchJob($event)></app-search-job>
 <main>
+    <div class="clearfix"></div>
+
     <div class="container">
 
         <!--Section: Blog v.2-->

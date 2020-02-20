@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret = require('../config/env.config').jwt_secret;
+const config = require('../config/env.config');
 
 exports.validJWTNeeded = (req, res, next) => {
     try {
@@ -12,12 +12,11 @@ exports.validJWTNeeded = (req, res, next) => {
             return res.send({ 'statusCode': 401, 'statusText': 'Unauthorized request' });
         }
 
-        const payload = jwt.verify(token, secret);
+        const payload = jwt.verify(token, config.jwt_secret);
         if (!payload) {
             return res.send({ 'statusCode': 401, 'statusText': 'Unauthorized request' });
         }
-        req.userId = payload.sub;
-        req.roleId = payload.roleId;
+        req.memberId = payload.sub;
         req.email = payload.email;
         next();
     } catch (error) {
