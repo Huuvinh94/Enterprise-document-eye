@@ -23,7 +23,9 @@ export class JobService {
       careerId: '',
       locationId: '',
       filter: 0,
-      page
+      page,
+      arraySearchCareer: [],
+      arraySearchLocation: []
     };
 
     if (recentSearch !== null) {
@@ -35,6 +37,11 @@ export class JobService {
     if (filterJob !== null) {
       valSearch.filter = filterJob;
     }
+
+    const arraySearch = JSON.parse(localStorage.getItem(Constant.ARR_SEARCH));
+
+    valSearch.arraySearchLocation = (arraySearch === null || arraySearch.location === undefined) ? [] : arraySearch.location;
+    valSearch.arraySearchCareer = (arraySearch === null || arraySearch.career === undefined) ? [] : arraySearch.career;
 
     return this.http.post<any>('/api/searchJob', valSearch)
       .pipe(map((res: any) => {

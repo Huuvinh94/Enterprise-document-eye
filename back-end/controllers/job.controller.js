@@ -10,6 +10,8 @@ exports.searchJob = (req, res) => {
     const textSearch = valueRequest.textSearch.toString();
     const careerId = valueRequest.careerId;
     const locationId = valueRequest.locationId;
+    const arraySearchCareer = valueRequest.arraySearchCareer;
+    const arraySearchLocation = valueRequest.arraySearchLocation;
     let filter = { 'salary': -1 };
     const conditionSearch = {};
     let skip = 0;
@@ -45,20 +47,24 @@ exports.searchJob = (req, res) => {
         });
     }
 
-    if (careerId != '' || locationId != '') {
-        conditionSearch['$and'] = [];
-    }
-
     if (careerId != '') {
-        conditionSearch['$and'].push({
-            'career': Number(careerId)
-        });
+        arraySearchCareer.push(careerId);
     }
 
     if (locationId != '') {
-        conditionSearch['$and'].push({
-            'location': Number(locationId)
-        });
+        arraySearchLocation.push(locationId)
+    }
+
+    if (arraySearchCareer.length > 0 || arraySearchLocation.length > 0) {
+        conditionSearch['$and'] = [];
+    }
+
+    if (arraySearchCareer.length > 0) {
+        conditionSearch['$and'].push({ 'career': { '$in': arraySearchCareer } })
+    }
+
+    if (arraySearchLocation.length > 0) {
+        conditionSearch['$and'].push({ 'location': { '$in': arraySearchLocation } });
     }
 
     if (valueRequest.filter === 0) {

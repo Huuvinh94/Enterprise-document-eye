@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { DetailJobComponent } from './job/detail-job/detail-job.component';
 import { FindJobComponent } from './job/find-job/find-job.component';
 import { ListResumeComponent } from './list-resume/list-resume.component';
 import { RoutesRoutingModule } from './routes-routing.module';
@@ -25,7 +26,8 @@ const COMPONENTS = [
   FooterComponent,
   SignInPopupComponent,
   UploadResumeComponent,
-  FindJobComponent
+  FindJobComponent,
+  DetailJobComponent
 ];
 const COMPONENTS_DYNAMIC = [SignInPopupComponent];
 

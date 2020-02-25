@@ -1,6 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import { AuthService } from '@core';
+import { AuthService, PreloaderService } from '@core';
 import { Common } from 'app/common/common';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -13,6 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
     constructor(
         private injector: Injector,
         private common: Common,
+        private loaderService: PreloaderService
     ) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -41,6 +42,7 @@ export class TokenInterceptor implements HttpInterceptor {
                     // location.reload();
                 }
 
+                this.loaderService.hide()
                 const error = err.error.message || err.statusText;
                 this.common.messageExecute(err);
                 return throwError(error);

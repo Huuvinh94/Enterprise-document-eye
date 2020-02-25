@@ -22,6 +22,7 @@ export class UploadResumeComponent implements OnInit {
     if (this.deviceService.isMobile()) {
       this.labelInfoFile = Constant.LABEL_FILE_UPLOAD_DEFAULT;
     }
+    this.resize();
   }
 
   /**

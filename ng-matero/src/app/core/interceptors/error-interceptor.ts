@@ -1,13 +1,16 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService } from '@core';
+import { AuthService, PreloaderService } from '@core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthService) { }
+    constructor(
+        private authenticationService: AuthService,
+        private loaderService: PreloaderService
+    ) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
@@ -17,6 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 location.reload();
             }
 
+            this.loaderService.hide();
             const error = err.error.message || err.statusText;
             return throwError(error);
         }));

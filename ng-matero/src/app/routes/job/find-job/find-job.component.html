@@ -37,7 +37,12 @@
                                         </a>
                                     </div>
                                     <div class="col-md-1 col-2 save-job">
-                                        <i *ngIf="!isLoadSaveJob[i]" [ngClass]="item.saveJob ? 'fas fa-heart' : 'far fa-heart'" aria-hidden="true" (click)="saveOrUnSaveJob(item.jobId, item.saveJob, i)"></i>
+                                        <ng-template #notification [ngIf]="isLoadNotification[i]">
+                                            <div class="notification-tooltip">
+                                                {{item.saveJob ? 'Lưu' : 'Xóa'}} công việc thành công</div>
+                                            <div class="arrow-bottom"></div>
+                                        </ng-template>
+                                        <i *ngIf="!isLoadSaveJob[i]" [ngClass]="item.saveJob ? 'fas fa-heart' : 'far fa-heart'" aria-hidden="true" (click)="saveOrUnSaveJob(item.jobId, item.saveJob, i)" title="{{item.saveJob ? 'Xóa' : 'Lưu'}} công việc"></i>
                                         <i *ngIf="isLoadSaveJob[i]" class="fas fa-spinner fa-spin"></i>
                                     </div>
                                 </div>
@@ -63,34 +68,66 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-3 accordion-custom">
+                        <mat-accordion [multi]="true">
+                            <mat-expansion-panel #panelLocation [expanded]="true">
+                                <mat-expansion-panel-header>
+                                    <i class="fas fa-map-marker-alt align-items-center d-flex mr-2" aria-hidden="true"></i> Địa điểm
+                                </mat-expansion-panel-header>
+                                <ng-container *ngTemplateOutlet="matExpansionPanelContentLocation"></ng-container>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel #panelCareer [expanded]="true">
+                                <mat-expansion-panel-header>
+                                    <i class="fas fa-list align-items-center d-flex mr-2" aria-hidden="true"></i> Ngành nghề
+                                </mat-expansion-panel-header>
+                                <mat-panel-title></mat-panel-title>
+                                <ng-container *ngTemplateOutlet="matExpansionPanelContentCareer"></ng-container>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <ng-template #matExpansionPanelContentLocation>
+                            <mat-checkbox [checked]="checked(item.id, 'location')" *ngFor="let item of listLocation" color="primary" (change)="changeCheckbox($event, item.id, 'location')">{{item.text}}
+                            </mat-checkbox>
+                        </ng-template>
+                        <ng-template #matExpansionPanelContentCareer>
+                            <mat-checkbox [checked]="checked(item.id, 'career')" *ngFor="let item of listCareer" color="primary" (change)="changeCheckbox($event, item.id, 'career')">{{item.text}}
+                            </mat-checkbox>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
                         <div class="pb-0 pt-3 justify-content-center d-flex">
                             <ul *ngIf="pager && pager.pages && pager.pages.length" class="pagination pagination-circle pg-blue">
-                                <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item disabled">
-                                    <a (click)="changePage(1)" class="page-link" mdbWavesEffect>First</a>
+                                <li [ngClass]="{disabled: pager.currentPage === 1}" class="page-item disabled">
+                                    <a (click)="changePage(1)" class="page-link" mdbWavesEffect>
+                                        <i class="fas fa-angle-double-left"></i>
+                                    </a>
                                 </li>
-                                <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item disabled">
+                                <li [ngClass]="{disabled: pager.currentPage === 1}" class="page-item disabled">
                                     <a (click)="changePage(pager.currentPage - 1)" class="page-link" aria-label="Previous" mdbWavesEffect>
-                                        <span aria-hidden="true">&laquo;</span>
+                                        <i class="fas fa-angle-left"></i>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-                                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item active">
+                                <li *ngFor="let page of pager.pages" [ngClass]="{active: pager.currentPage === page}" class="page-item active">
                                     <a class="page-link" (click)="changePage(page)" mdbWavesEffect>{{page}}</a>
                                 </li>
-                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+                                <li [ngClass]="{disabled: pager.currentPage === pager.totalPages}" class="page-item">
                                     <a (click)="changePage(pager.currentPage + 1)" class="page-link" aria-label="Next" mdbWavesEffect>
-                                        <span aria-hidden="true">&raquo;</span>
+                                        <i class="fas fa-angle-right"></i>
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </li>
-                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
-                                    <a (click)="changePage(pager.totalPages)" class="page-link" mdbWavesEffect>Last</a>
+                                <li [ngClass]="{disabled: pager.currentPage === pager.totalPages}" class="page-item">
+                                    <a (click)="changePage(pager.totalPages)" class="page-link" mdbWavesEffect>
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3"></div>
             </div>
         </section>
     </div>

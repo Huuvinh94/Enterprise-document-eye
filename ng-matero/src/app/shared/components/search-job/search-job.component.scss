@@ -9,7 +9,7 @@
         width: 100%;
         min-width: 800px;
         border-radius: 5px;
-        background-color: rgba(6, 171, 155, 0.65);
+        background-color: rgba(80, 105, 85, 0.53);
         padding: 15px;
         .header-search {
             display: flex;
@@ -33,16 +33,15 @@
                 height: 42px;
             }
             button {
-                background-color: #0e8449;
-                border-color: #0e8449;
+                background-color: #216a94;
+                border-color: #216a94;
                 color: #ffffff;
             }
         }
     }
     .search-plus {
         a {
-            color: #0e8449;
-            font-weight: 700;
+            color: #ffffff;
             padding: 2px 13px;
             font-size: 15px;
             border-style: initial;

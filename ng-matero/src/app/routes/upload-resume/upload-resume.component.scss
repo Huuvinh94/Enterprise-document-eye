@@ -64,3 +64,87 @@ input[type=file]::-webkit-file-upload-button {
     /* chromes and blink button */
     cursor: pointer;
 }
+
+@media only screen and (min-width: 481px) and (max-width: 959px) {
+     ::ng-deep .navbar {
+        background-color: #1C2331;
+    }
+    .container-search {
+        form {
+            .header-upload {
+                font-size: 20px;
+            }
+            .content-search {
+                border: 8px solid rgba(0, 0, 0, 0.35);
+            }
+            .custom-file {
+                height: 32px;
+            }
+        }
+        .custom-file-input {
+            ~.custom-file-label {
+                height: 32px;
+                &::after {
+                    height: 31px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+     ::ng-deep .navbar {
+        background-color: #1C2331;
+    }
+     ::ng-deep .carousel img {
+        height: 50vh;
+    }
+    .container-search {
+        top: 40%;
+        form {
+            width: 80%;
+            .header-upload {
+                font-size: 15px;
+            }
+            .content-search {
+                border: 6px solid rgba(0, 0, 0, 0.35);
+            }
+            .custom-file {
+                height: 32px;
+            }
+        }
+        .custom-file-input {
+            ~.custom-file-label {
+                height: 32px;
+                &::after {
+                    content: '...';
+                    height: 31px;
+                }
+            }
+        }
+    }
+    .content-info-cv {
+        font-size: 13px;
+        a {
+            border: 1px solid #fff;
+            border-radius: 50px;
+            color: #fff;
+            font-weight: 700;
+            padding: 1px 6px;
+            font-size: 13px;
+        }
+    }
+    .carousel-inner .card {
+        width: 8rem;
+        .card-img-top {
+            width: 100px;
+            height: 100px;
+        }
+        .card-title {
+            font-size: 13px;
+        }
+        .rating {
+            font-size: 16px;
+        }
+    }
+}

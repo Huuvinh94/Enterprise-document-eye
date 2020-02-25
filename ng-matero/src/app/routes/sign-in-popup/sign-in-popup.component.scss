@@ -15,11 +15,15 @@
         font-size: 0.95em;
         margin-top: 2px;
     }
-    .mat-tab-label {
-        font-size: 16px;
-    }
-    .mat-tab-label-active {
-        font-weight: bold;
+    .mat-tab-labels {
+        width: 100%;
+        .mat-tab-label {
+            font-size: 16px;
+            width: 50%;
+        }
+        .mat-tab-label-active {
+            font-weight: bold;
+        }
     }
     .mat-ink-bar {
         background-color: #DE470F !important;
